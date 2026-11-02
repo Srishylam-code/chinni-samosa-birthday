@@ -15,6 +15,7 @@ class GalleryManager {
     this.autoPlayDuration = 5500; // 5.5 seconds per slide
     this.touchStartX = 0;
     this.touchEndX = 0;
+    this.isTransitioning = false;
 
     // DOM references for Polaroid Deck
     this.activeCard = document.getElementById('active-polaroid');
@@ -44,9 +45,31 @@ class GalleryManager {
   }
 
   init() {
+    this.preloadAllPhotos();
     this.updateCardContent(0, 'none');
     this.bindEvents();
     this.bindLightboxEvents();
+  }
+
+  preloadAllPhotos() {
+    if (!this.photos || !this.photos.length) return;
+    const count = this.photos.length;
+    // Preload first 4 immediately for instant responsiveness
+    for (let i = 0; i < Math.min(4, count); i++) {
+      if (this.photos[i] && this.photos[i].src) {
+        const img = new Image();
+        img.src = this.photos[i].src;
+      }
+    }
+    // Preload all remaining photos in background
+    setTimeout(() => {
+      for (let i = 4; i < count; i++) {
+        if (this.photos[i] && this.photos[i].src) {
+          const img = new Image();
+          img.src = this.photos[i].src;
+        }
+      }
+    }, 300);
   }
 
   bindEvents() {
@@ -149,25 +172,68 @@ class GalleryManager {
 
   goToPhoto(index, direction = 'next') {
     if (index === this.currentIndex && direction !== 'none') return;
+    if (this.isTransitioning) return;
+    this.isTransitioning = true;
+
+    const targetPhoto = this.photos[index];
+    if (!targetPhoto) {
+      this.isTransitioning = false;
+      return;
+    }
+
+    // Ensure target photo is cached / ready
+    const targetImg = new Image();
+    targetImg.src = targetPhoto.src;
+
+    // Preload ahead in the sliding direction
+    const nextAhead = (index + (direction === 'prev' ? -1 : 1) + this.photos.length) % this.photos.length;
+    if (this.photos[nextAhead]) new Image().src = this.photos[nextAhead].src;
 
     if (this.activeCard) {
-      // Trigger slide out
       const animClass = direction === 'prev' ? 'slide-prev' : 'slide-next';
       this.activeCard.classList.add(animClass);
 
-      setTimeout(() => {
+      // Immediately fade out the old photo so it NEVER lingers while sliding
+      if (this.deckImg) {
+        this.deckImg.style.opacity = '0';
+      }
+
+      const applyNewPhoto = () => {
         this.currentIndex = index;
         this.updateCardContent(index, direction);
+
+        // Instantly display the new photo with full opacity
+        if (this.deckImg) {
+          this.deckImg.style.opacity = '1';
+        }
+
         this.activeCard.classList.remove(animClass);
         this.activeCard.classList.add('settle-in');
 
         setTimeout(() => {
           this.activeCard.classList.remove('settle-in');
-        }, 450);
-      }, 200);
+          this.isTransitioning = false;
+        }, 360);
+      };
+
+      if (targetImg.complete) {
+        setTimeout(applyNewPhoto, 200);
+      } else {
+        let done = false;
+        const onReady = () => {
+          if (!done) {
+            done = true;
+            applyNewPhoto();
+          }
+        };
+        targetImg.onload = onReady;
+        targetImg.onerror = onReady;
+        setTimeout(onReady, 350);
+      }
     } else {
       this.currentIndex = index;
       this.updateCardContent(index, direction);
+      this.isTransitioning = false;
     }
   }
 
@@ -343,14 +409,25 @@ class GalleryManager {
 
     if (this.lightboxImg) {
       this.lightboxImg.style.opacity = '0';
-      setTimeout(() => {
+      const targetImg = new Image();
+      targetImg.src = photo.src;
+
+      const reveal = () => {
         this.lightboxImg.src = photo.src;
         this.lightboxImg.alt = photo.title || 'Enlarged photo';
         if (this.lightboxCounter) this.lightboxCounter.textContent = `${formattedIndex} / ${totalCount}`;
         if (this.lightboxTitle) this.lightboxTitle.textContent = photo.title || `Memory #${formattedIndex}`;
         if (this.lightboxCaption) this.lightboxCaption.textContent = photo.caption || '';
         this.lightboxImg.style.opacity = '1';
-      }, 150);
+      };
+
+      if (targetImg.complete) {
+        setTimeout(reveal, 100);
+      } else {
+        targetImg.onload = reveal;
+        targetImg.onerror = reveal;
+        setTimeout(reveal, 300);
+      }
     }
   }
 

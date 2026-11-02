@@ -160,15 +160,15 @@
 
 /* Floating Card Animation when transitioning photos */
 .active-polaroid-card.slide-next {
-  animation: slideOutNext 0.45s var(--ease-cinematic) forwards;
+  animation: slideOutNext 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .active-polaroid-card.slide-prev {
-  animation: slideOutPrev 0.45s var(--ease-cinematic) forwards;
+  animation: slideOutPrev 0.25s cubic-bezier(0.4, 0, 0.2, 1) forwards;
 }
 
 .active-polaroid-card.settle-in {
-  animation: settleIn 0.45s var(--ease-cinematic) forwards;
+  animation: settleIn 0.35s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 @keyframes slideOutNext {
