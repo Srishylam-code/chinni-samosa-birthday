@@ -175,11 +175,11 @@ const CONFIG = {
       },
       {
             "id": 16,
-            "src": "photos/photo-17.jpg",
-            "title": "Footprints in Time",
-            "caption": "Tracing back the sweetest steps of our childhood and the laughter we shared.",
-            "date": "Nostalgia",
-            "category": "candid"
+            "src": "photos/our-cuties.jpg",
+            "title": "Our Cuties",
+            "caption": "The sweetest, purest little bundles of happiness that bring endless smiles and joy to our hearts.",
+            "date": "Pure Love",
+            "category": "bond"
       },
       {
             "id": 17,
