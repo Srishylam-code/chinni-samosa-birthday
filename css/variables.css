@@ -1,0 +1,144 @@
+/**
+ * Color Palettes and Dynamic Design Variables
+ * Defined for Chinni Samosa — 5 Connected Chapters
+ */
+
+:root {
+  /* Screen 1 — Emerald Green & Mint */
+  --s1-bg: #03150E;
+  --s1-bg-secondary: #07261A;
+  --s1-emerald: #087F5B;
+  --s1-mint: #A8FFD5;
+  --s1-gold: #D9B56D;
+  --s1-text: #F4FFF8;
+  --s1-beam: rgba(168, 255, 213, 0.18);
+  --s1-glow: radial-gradient(circle at 50% 40%, rgba(8, 127, 91, 0.5) 0%, rgba(7, 38, 26, 0.85) 50%, #03150E 100%);
+
+  /* Screen 2 — Black & Radiant Gold */
+  --s2-bg: #080808;
+  --s2-bg-secondary: #171207;
+  --s2-gold: #D9B56D;
+  --s2-champagne: #F3E1B5;
+  --s2-text: #FFF8EC;
+  --s2-beam: rgba(217, 181, 109, 0.16);
+  --s2-glow: radial-gradient(circle at 50% 35%, rgba(217, 181, 109, 0.32) 0%, rgba(26, 20, 10, 0.85) 55%, #080808 100%);
+
+  /* Screen 3 — Burgundy & Rose Gold (Letter) */
+  --s3-bg: #150409;
+  --s3-bg-secondary: #360B16;
+  --s3-burgundy: #651C30;
+  --s3-rose-gold: #DDA1A8;
+  --s3-paper: #FFF7F0;
+  --s3-paper-text: #2D141C;
+  --s3-text: #FFF1E9;
+  --s3-beam: rgba(221, 161, 168, 0.2);
+  --s3-glow: radial-gradient(circle at 50% 45%, rgba(101, 28, 48, 0.55) 0%, rgba(50, 11, 22, 0.88) 55%, #150409 100%);
+
+  /* Screen 4 — Emerald & Candlelight (Make a Wish) */
+  --s4-bg: #03180F;
+  --s4-bg-secondary: #0A3522;
+  --s4-emerald: #0B6545;
+  --s4-candlelight: #FFD98A;
+  --s4-flame: #FFA726;
+  --s4-gold: #D9B56D;
+  --s4-text: #F8FFF9;
+  --s4-beam: rgba(255, 217, 138, 0.22);
+  --s4-glow: radial-gradient(circle at 50% 50%, rgba(255, 167, 38, 0.28) 0%, rgba(11, 101, 69, 0.45) 50%, #03180F 100%);
+
+  /* Screen 5 — Golden Sunset Horizon (The Final Surprise) */
+  --s5-bg: #0D0408;
+  --s5-bg-secondary: #260C14;
+  --s5-sunset: #E2522B;
+  --s5-amber: #FF9447;
+  --s5-gold: #FCD068;
+  --s5-text: #FFF8EE;
+  --s5-beam: rgba(255, 148, 71, 0.32);
+  --s5-glow: radial-gradient(ellipse at 50% 85%, rgba(226, 82, 43, 0.48) 0%, rgba(150, 45, 35, 0.42) 30%, rgba(55, 16, 26, 0.88) 65%, #0D0408 100%);
+
+  /* Active Theme Defaults (Screen 1) */
+  --current-bg: var(--s1-bg);
+  --current-bg-secondary: var(--s1-bg-secondary);
+  --current-accent: var(--s1-emerald);
+  --current-highlight: var(--s1-mint);
+  --current-gold: var(--s1-gold);
+  --current-text: var(--s1-text);
+  --current-beam: var(--s1-beam);
+  --ambient-glow: var(--s1-glow);
+
+  /* Typography */
+  --font-serif: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-title: 'Cinzel', 'Playfair Display', serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-script: 'Marck Script', 'Caveat', cursive;
+
+  /* Transitions & Timing */
+  --ease-cinematic: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-screen: 850ms cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* Z-Index Layers */
+  --z-bg: 0;
+  --z-canvas: 1;
+  --z-screen: 10;
+  --z-overlay: 50;
+  --z-nav: 100;
+  --z-audio: 110;
+  --z-lightbox: 200;
+  --z-transition: 999;
+}
+
+/* Page-Wise Dynamic Coloring Overrides */
+body[data-screen="1"] {
+  --current-bg: var(--s1-bg);
+  --current-bg-secondary: var(--s1-bg-secondary);
+  --current-accent: var(--s1-emerald);
+  --current-highlight: var(--s1-mint);
+  --current-gold: var(--s1-gold);
+  --current-text: var(--s1-text);
+  --current-beam: var(--s1-beam);
+  --ambient-glow: var(--s1-glow);
+}
+
+body[data-screen="2"] {
+  --current-bg: var(--s2-bg);
+  --current-bg-secondary: var(--s2-bg-secondary);
+  --current-accent: var(--s2-gold);
+  --current-highlight: var(--s2-champagne);
+  --current-gold: var(--s2-gold);
+  --current-text: var(--s2-text);
+  --current-beam: var(--s2-beam);
+  --ambient-glow: var(--s2-glow);
+}
+
+body[data-screen="3"] {
+  --current-bg: var(--s3-bg);
+  --current-bg-secondary: var(--s3-bg-secondary);
+  --current-accent: var(--s3-burgundy);
+  --current-highlight: var(--s3-rose-gold);
+  --current-gold: #F2C4CB;
+  --current-text: var(--s3-text);
+  --current-beam: var(--s3-beam);
+  --ambient-glow: var(--s3-glow);
+}
+
+body[data-screen="4"] {
+  --current-bg: var(--s4-bg);
+  --current-bg-secondary: var(--s4-bg-secondary);
+  --current-accent: var(--s4-emerald);
+  --current-highlight: var(--s4-candlelight);
+  --current-gold: var(--s4-candlelight);
+  --current-text: var(--s4-text);
+  --current-beam: var(--s4-beam);
+  --ambient-glow: var(--s4-glow);
+}
+
+body[data-screen="5"] {
+  --current-bg: var(--s5-bg);
+  --current-bg-secondary: var(--s5-bg-secondary);
+  --current-accent: var(--s5-sunset);
+  --current-highlight: var(--s5-amber);
+  --current-gold: var(--s5-gold);
+  --current-text: var(--s5-text);
+  --current-beam: var(--s5-beam);
+  --ambient-glow: var(--s5-glow);
+}

@@ -1,0 +1,333 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>Chinni Samosa's Birthday Surprise | Bangaaramuuuu</title>
+  <meta name="description" content="A cinematic, personal birthday surprise journey dedicated to Bangaaramuuuu (Chinni Samosa).">
+
+  <!-- Google Fonts: Cormorant Garamond, Cinzel, Inter, Marck Script -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Inter:wght@300;400;500;600&family=Marck+Script&display=swap" rel="stylesheet">
+
+  <!-- Core Stylesheets -->
+  <link rel="stylesheet" href="css/variables.css?v=20261102_clean">
+  <link rel="stylesheet" href="css/main.css?v=20261102_clean">
+  <link rel="stylesheet" href="css/components.css?v=20261102_clean">
+  <link rel="stylesheet" href="css/screens.css?v=20261102_clean">
+</head>
+<body data-screen="1">
+
+  <!-- Ambient Cinematic Background & Particle Canvas -->
+  <div id="ambient-container">
+    <div id="ambient-gradient" class="ambient-gradient"></div>
+    <div class="cinematic-beam"></div>
+    <canvas id="particle-canvas"></canvas>
+    
+  </div>
+  <div class="vignette-overlay"></div>
+
+  <!-- Persistent Chapter Navigation (5 Connected Chapters) -->
+  <nav id="chapter-navigation" aria-label="Surprise Chapters">
+    <div class="chapter-dot active" data-screen="1" data-title="The Secret Entrance" role="button" tabindex="0" aria-label="Chapter 1: The Secret Entrance"></div>
+    <div class="chapter-dot" data-screen="2" data-title="Our Little Memories" role="button" tabindex="0" aria-label="Chapter 2: Our Little Memories"></div>
+    <div class="chapter-dot" data-screen="3" data-title="A Letter From My Heart" role="button" tabindex="0" aria-label="Chapter 3: A Letter From My Heart"></div>
+    <div class="chapter-dot" data-screen="4" data-title="Make a Wish" role="button" tabindex="0" aria-label="Chapter 4: Make a Wish"></div>
+    <div class="chapter-dot" data-screen="5" data-title="The Final Surprise" role="button" tabindex="0" aria-label="Chapter 5: The Final Surprise"></div>
+    <span id="chapter-counter" class="chapter-counter">Chapter 01 / 05</span>
+  </nav>
+
+  <!-- Persistent Background Audio Widget -->
+  <aside id="audio-widget" aria-label="Background Music Controller">
+    <button id="audio-toggle-btn" class="audio-toggle-btn" aria-label="Play or Pause Background Music" title="Toggle Music">
+      <div class="audio-equalizer">
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+        <div class="eq-bar"></div>
+      </div>
+    </button>
+    <button id="audio-next-btn" class="audio-next-btn" aria-label="Next Song" title="Skip to Next Song">⏭</button>
+    <div class="audio-info">
+      <span id="audio-title" class="audio-title" title="Birthday Melody for Bangaaramuuuu">Melody for Bangaaramuuuu</span>
+      <span id="audio-status" class="audio-status">Paused</span>
+    </div>
+    <div class="volume-slider-container">
+      <input type="range" id="volume-slider" class="volume-slider" min="0" max="1" step="0.05" value="0.35" aria-label="Music Volume">
+    </div>
+  </aside>
+
+  <!-- Main Experience Screens Container -->
+  <main id="experience-container">
+
+    <!-- ====================================================================
+         SCREEN 1: THE SECRET ENTRANCE (EMERALD GREEN & MINT)
+         ==================================================================== -->
+    <section id="screen-1" class="screen active" aria-label="The Secret Entrance">
+      <div class="entrance-card">
+        <div class="entrance-sparkle">✦</div>
+        <h1 id="s1-headline" class="entrance-headline">
+          Explore the Chinni Samosa's Surprise
+        </h1>
+        <p id="s1-subtitle" class="entrance-subtitle">
+          A little surprise, made with all my love.
+        </p>
+        <div class="entrance-cta-wrapper">
+          <button id="enter-surprise-btn" class="btn-cinematic btn-emerald">
+            Enter the Surprise ✦
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 2: OUR LITTLE MEMORIES (CINEMATIC POLAROID DECK)
+         ==================================================================== -->
+    <section id="screen-2" class="screen" aria-label="Our Little Memories">
+      <div class="deck-experience-container">
+        <span class="section-badge">Chapter II • Our Memories</span>
+        <h2 id="s2-heading" class="section-title">Our Little Memories</h2>
+        <p id="s2-subtitle" class="section-subtitle">
+          Every picture holds a little piece of happiness. One memory at a time.
+        </p>
+
+        <!-- Polaroid Deck Stage -->
+        <div class="polaroid-stage">
+          <!-- Stack background cards for depth -->
+          <div class="deck-shadow-card deck-card-back"></div>
+          <div class="deck-shadow-card deck-card-mid"></div>
+
+          <!-- Active Primary Polaroid Card -->
+          <div id="active-polaroid" class="active-polaroid-card" title="Click to view full screen">
+            <div class="polaroid-image-frame">
+              <span id="deck-counter" class="deck-badge">01 / 24</span>
+              <img id="deck-img" class="deck-img" src="photos/photo-01.jpg" alt="Memory Photo" />
+            </div>
+            <div class="polaroid-details">
+              <h3 id="deck-title" class="deck-photo-title">The Original Chinni Samosa</h3>
+              <p id="deck-caption" class="deck-photo-caption">That sweet, innocent smile that started it all — forever my little bundle of joy.</p>
+            </div>
+          </div>
+
+          <!-- Flanking Navigation Buttons -->
+          <button id="deck-prev-btn" class="deck-nav-btn prev" aria-label="Previous Memory" title="Previous Memory (Left Arrow)">
+            &#10094;
+          </button>
+          <button id="deck-next-btn" class="deck-nav-btn next" aria-label="Next Memory" title="Next Memory (Right Arrow)">
+            &#10095;
+          </button>
+        </div>
+
+        <!-- Controls Row: Auto-Play & Progress Bar -->
+        <div class="deck-controls-row">
+          <button id="deck-autoplay-btn" class="deck-control-pill" title="Toggle Auto Slideshow">
+            <span id="autoplay-icon">▶</span> <span id="autoplay-text">Auto Play</span>
+          </button>
+          <div class="deck-progress-bar-wrap">
+            <div id="deck-progress-bar" class="deck-progress-bar"></div>
+          </div>
+          <button id="gallery-advance-btn" class="btn-cinematic deck-advance-btn" data-next-screen="3" style="display: none;">
+            Next section of love is waiting for you →
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 3: A LETTER FROM MY HEART (BURGUNDY & ROSE GOLD)
+         ==================================================================== -->
+    <section id="screen-3" class="screen" aria-label="A Letter From My Heart">
+      <div class="letter-wrapper">
+        <span class="section-badge">Chapter III • From The Heart</span>
+        <h2 id="s3-heading" class="section-title">A Letter From My Heart</h2>
+        <p id="s3-prompt" class="section-subtitle">
+          I have something special to tell you.
+        </p>
+
+        <!-- 3D Envelope with Wax Seal -->
+        <div id="envelope-container" class="envelope-container" title="Click to open letter">
+          <div id="envelope" class="envelope">
+            <div class="envelope-flap"></div>
+            <div id="wax-seal" class="wax-seal">❤️</div>
+          </div>
+        </div>
+
+        <button id="open-letter-btn" class="btn-cinematic btn-burgundy" style="margin-bottom: 2rem;">
+          Open Your Letter
+        </button>
+
+        <!-- Paragraph-by-Paragraph Cinematic Letter Deck -->
+        <div id="letter-deck-container" class="letter-deck-container" style="display: none;">
+          <div class="letter-deck-topbar">
+            <span id="letter-page-indicator" class="letter-page-indicator">Thought 01 / 08</span>
+          </div>
+
+          <div class="letter-card-wrapper">
+            <button id="letter-card-prev-btn" class="letter-card-arrow prev" aria-label="Previous thought">⟨</button>
+            
+            <article id="letter-active-card" class="letter-card">
+              <div id="letter-card-standard-content" style="display: flex; flex-direction: column; width: 100%;">
+                <span id="letter-card-tag" class="letter-card-tag">A Beautiful Beginning</span>
+                <h3 id="letter-card-title" class="letter-card-title">Happy Birthday, my Bangaaramuuuuuu! ❤️🥹🫂🎂</h3>
+                <div class="letter-card-divider">✦ ❦ ✦</div>
+                <p id="letter-card-body" class="letter-card-body"></p>
+              </div>
+
+              <!-- Interactive Nickname Prompt (Between Thought 07 & 08) -->
+              <div id="letter-card-prompt-content" class="letter-prompt-content" style="display: none;">
+                <span class="letter-card-tag">A Special Question Just For You</span>
+                <h3 class="letter-card-title" style="margin-bottom: 0.75rem;">Give me a name you call me : ❤️</h3>
+                <div class="letter-card-divider">✦ ❦ ✦</div>
+                <p class="letter-prompt-hint">Before our final promise... what is that special pet name or nickname you always call me?</p>
+                <div class="letter-prompt-input-group">
+                  <input type="text" id="brother-nickname-input" class="brother-nickname-input" placeholder="" maxlength="25" autocomplete="off" />
+                  <button id="submit-nickname-btn" class="btn-cinematic btn-burgundy">Continue to Our Final Promise ✦</button>
+                </div>
+              </div>
+            </article>
+
+            <button id="letter-card-next-btn" class="letter-card-arrow next" aria-label="Next thought">⟩</button>
+          </div>
+
+          <!-- Progress dots & navigation bar -->
+          <div class="letter-deck-footer">
+            <button id="letter-footer-prev" class="btn-cinematic-sm btn-burgundy">← Prev</button>
+            <div id="letter-dots-track" class="letter-dots-track"></div>
+            <button id="letter-footer-next" class="btn-cinematic-sm btn-burgundy">Next Thought →</button>
+            <button id="letter-deck-finish" class="btn-cinematic btn-burgundy" data-next-screen="4" style="display: none;">
+              Ready for your birthday wish? →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         SCREEN 4: MAKE A WISH (EMERALD & CANDLELIGHT)
+         ==================================================================== -->
+    <section id="screen-4" class="screen" aria-label="Make a Wish">
+      <div class="cake-stage">
+        <span class="section-badge">Chapter IV • Candlelight</span>
+        <h2 id="s4-heading" class="section-title">Make a Wish</h2>
+        <p id="wish-prompt" class="section-subtitle">
+          Close your eyes and make a wish.
+        </p>
+
+        <!-- Birthday Cake & Candles -->
+        <div id="cake-wrapper" class="cake-wrapper">
+          <div class="candles-row">
+            <div class="candle">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+              <div class="smoke-puff"></div>
+            </div>
+            <div class="candle">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+              <div class="smoke-puff"></div>
+            </div>
+            <div class="candle">
+              <div class="candle-wick"></div>
+              <div class="candle-flame"></div>
+              <div class="smoke-puff"></div>
+            </div>
+          </div>
+          <div class="cake-tier top">
+            <div class="cake-frosting"></div>
+          </div>
+          <div class="cake-tier bottom">
+            <div class="cake-frosting"></div>
+          </div>
+          <div class="cake-plate"></div>
+        </div>
+
+        <button id="make-wish-btn" class="btn-cinematic btn-emerald">
+          Make a Wish ✨
+        </button>
+
+        <!-- Revealed Birthday Wish Card -->
+        <div id="wish-card" class="wish-card">
+          <p id="wish-message" class="wish-message"></p>
+          <span id="wish-author" class="wish-author"></span>
+          <div class="wish-cta-row">
+            <button class="btn-cinematic btn-emerald" data-next-screen="5">
+              One Last Surprise →
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+        <!-- ====================================================================
+         SCREEN 5: THE FINAL SURPRISE (WARM SUNSET HORIZON & GOLD)
+         ==================================================================== -->
+    <section id="screen-5" class="screen" aria-label="The Final Surprise">
+      <div class="final-surprise-stage">
+        <span class="section-badge">Chapter V • The Celebration</span>
+
+        <!-- Single Featured Photo: Oh Hello Bangaaramuuuu -->
+        <div class="final-photo-card single-featured">
+          <div class="final-photo-frame pulse-halo">
+            <div class="final-photo-inner">
+              <img id="final-photo-img" class="final-photo-img" src="photos/photo-13.jpg" alt="Oh Hello, Bangaaramuuuu" />
+            </div>
+          </div>
+          <span class="final-photo-badge">Oh Hello, Bangaaramuuuu ✨</span>
+        </div>
+
+        <h1 id="s6-headline" class="final-headline">
+          Happy Birthday, Bangaaramuuuu!
+        </h1>
+        <p id="s6-message" class="final-message">
+          To my sweetest <strong>Bubu</strong>, my forever <strong>Bujji Konda</strong>, my radiant <strong>Bangaru Konda</strong>, and my darling <strong>Bangaru Thalli</strong> — Happy Birthday! ✨❤️<br><br>
+          To my little <strong>Chitti Thalli</strong>, my purest <strong>Bangaram</strong>, my precious <strong>Kanna</strong>, and my dearest <strong>Nana</strong>, may your year ahead overflow with boundless happiness, radiant health, dreams fulfilled, and reasons to laugh every single day. You are the joy of my life and the queen of our hearts. Always here cheering for you, protecting your smile, and loving you endlessly, my Bangaaramuuuu! 🎂🎉✨❤️♾️
+        </p>
+
+        <div class="final-actions">
+          <button id="replay-journey-btn" class="btn-cinematic btn-purple">
+            Replay Our Journey ↺
+          </button>
+          <button class="btn-cinematic btn-outline" data-next-screen="2">
+            Browse 24 Memories ✦
+          </button>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Expanded Photo Lightbox Modal -->
+  <div id="photo-lightbox" class="photo-lightbox" role="dialog" aria-modal="true" aria-label="Expanded Photo Viewer">
+    <button id="lightbox-close-btn" class="lightbox-close-btn" aria-label="Close Lightbox">&times;</button>
+    <button id="lightbox-prev-btn" class="lightbox-nav-btn prev" aria-label="Previous Photo">&#10094;</button>
+    <button id="lightbox-next-btn" class="lightbox-nav-btn next" aria-label="Next Photo">&#10095;</button>
+
+    <div class="lightbox-content">
+      <div class="lightbox-image-wrapper">
+        <img id="lightbox-img" class="lightbox-img" src="" alt="Enlarged memory" />
+      </div>
+      <div class="lightbox-info">
+        <div id="lightbox-counter" class="lightbox-counter">01 / 24</div>
+        <h3 id="lightbox-title" class="lightbox-title"></h3>
+        <p id="lightbox-caption" class="lightbox-caption"></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Cinematic Screen Transition Curtain -->
+  <div id="transition-curtain" class="transition-curtain">
+    <div class="curtain-beam"></div>
+  </div>
+
+  <!-- JavaScript Modules -->
+  <script src="js/config.js?v=20261102_clean"></script>
+  <script src="js/particles.js?v=20261102_clean"></script>
+  <script src="js/audio.js?v=20261102_clean"></script>
+  <script src="js/gallery.js?v=20261102_clean"></script>
+  <script src="js/letter.js?v=20261102_clean"></script>
+  <script src="js/cake.js?v=20261102_clean"></script>
+  <script src="js/navigation.js?v=20261102_clean"></script>
+  <script src="js/app.js?v=20261102_clean"></script>
+</body>
+</html>
